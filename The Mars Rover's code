@@ -1,0 +1,43 @@
+horizontal = 8
+vertical = 10
+totalHorizontal = 15
+totalVertical = 20
+print("[Программа]: Марсоход находится на позиции", horizontal, ",", vertical, "введите команду: ")
+W = ""
+S = ""
+A = ""
+D = ""
+
+while True:
+     Operator = input("[Оператор]: ")
+     if Operator == "W":
+          if vertical > 1:         # Проверка верхней границы
+               vertical -= 1
+               print("[Программа]: Марсоход находится на позиции", horizontal, ",", vertical, "введите команду: ")
+               if vertical == 1:
+                    print("Упёрся в стену.")
+                    break
+
+     if Operator == "S":
+          if vertical < 20:        # Проверка нижней границы
+               vertical += 1
+               print("[Программа]: Марсоход находится на позиции", horizontal, ",", vertical, "введите команду: ")
+               if vertical == totalVertical:
+                    print("Упёрся в стену.")
+                    break
+
+     if Operator == "A":
+          if horizontal > 1:        # Проверка левой границы
+               horizontal -= 1
+               print("[Программа]: Марсоход находится на позиции", horizontal, ",", vertical, "введите команду: ")
+               if horizontal == 1:
+                    print("Упёрся в стену.")
+                    break
+
+     if Operator == "D":
+          if horizontal < 15:        # Проверка правой границы
+               horizontal += 1
+               print("[Программа]: Марсоход находится на позиции", horizontal, ",", vertical, "введите команду: ")
+               if horizontal == totalHorizontal:
+                    print("Упёрся в стену.")
+                    break
