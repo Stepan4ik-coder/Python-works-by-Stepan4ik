@@ -1,0 +1,96 @@
+# Калькулятор
+def calculate():
+
+    print("Добро пожаловать в калькулятор!")
+    print("Выберите действия:  \n1 (+) \n2 (-) \n3 (*) \n4 (/) \n5 (**)")
+
+    try:
+        choice = int(input("Ваш выбор (1-5): "))
+        while (choice < 1) or (choice > 5):
+            choice = int(input("Введите корректный номер действия: "))
+
+        num_1 = float(input("\nПервое число: "))
+        num_2 = float(input("Второе число: "))
+
+        if choice == 1:
+            print(f"Результат сложения: {num_1 + num_2}")
+        elif choice == 2:
+            print(f"Результат вычитания: {num_1 - num_2}")
+        elif choice == 3:
+            print(f"Результат умножения: {num_1 * num_2}")
+        elif choice == 4:
+
+            if num_2 == 0:
+                print("Деление на 0 запрещено.")
+            else:
+                print(f"Результат деления: {num_1 / num_2}")
+
+        elif choice == 5:
+            print(f"Результат возведения в степень: {num_1 ** num_2}")
+
+    except ValueError:
+        print("Ошибка! Введите число!")
+
+
+
+# Угадай число
+def guess_the_number():
+
+    import random
+
+    random_list = [random.randint(1, 100) for _ in range(1)]
+    print(random_list) #Это для понимания, какое число загадано, в реальной программе такого не будет
+    attempts = 0
+
+    while True:
+
+        try:
+            number = int(input("Число: "))
+
+            if number:
+                for i_num in random_list:
+                    if i_num > number:
+                        print("Загаданное число больше. Повторите попытку.")
+                        attempts += 1
+
+                    elif i_num < number:
+                        print("Загаданное число меньше. Повторите попытку.")
+                        attempts += 1
+
+                if attempts == 5:
+                    print("\nКол-во попыток истекло.")
+                    break
+
+                if random_list[0] == number:
+                    print("Ура! Вы угадали число за {0} попыток.".format(attempts + 1))
+                    break
+
+        except ValueError:
+            print("Ошибка! Введите число!")
+
+
+
+def users_choice(num):
+    return num
+
+# Основная программа
+print("Добро пожаловать! Рады приветствовать Вас! Выберете, какую программу хотите проверить? - "
+"\n1 - калькулятор. 2 - угадай число. 0 - Стоп-игра.")
+
+while True:
+    try:
+        own_choice = int(input("Ваш выбор: "))
+        if own_choice == 1:
+            calculate()
+        elif own_choice == 2:
+            guess_the_number()
+        elif own_choice == 0:
+            print("Спасибо за участие!")
+            break
+        else:
+            own_choice = int(input("Ошибка! Введите одно из предлагаемых чисел: "))
+    except ValueError:
+        print("Ошибка! Введите число!")
+
+
+users_choice(own_choice)
